@@ -1,0 +1,5 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'syllabus.blg'
+[29] biber-darwin:315> INFO - === Sun Aug 30, 2026, 15:38:13
+[48] Biber.pm:371> INFO - Reading 'syllabus.bcf'
+[118] Utils.pm:193> WARN - No data sources defined!

@@ -1,0 +1,275 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{dad}[2026/08/30 Data and Design with Python course style]
+
+% =========================================================
+% Core packages
+% =========================================================
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage{xcolor}
+\RequirePackage{geometry}
+\RequirePackage{graphicx}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{enumitem}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{hyperref}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{tcolorbox}
+\RequirePackage{etoolbox}
+\RequirePackage{listings}
+\RequirePackage{xparse}
+
+% =========================================================
+% Bibliography
+% =========================================================
+\RequirePackage[
+  backend=biber,
+  style=authoryear,
+  sorting=nyt,
+  maxcitenames=2,
+  maxbibnames=99
+]{biblatex}
+
+% =========================================================
+% Page geometry and typography
+% =========================================================
+\geometry{margin=0.8in,headheight=15pt}
+
+\renewcommand{\familydefault}{\sfdefault}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+% =========================================================
+% Course colors
+% =========================================================
+\definecolor{LangRed}{HTML}{E31B23}
+\definecolor{LangBlack}{HTML}{111111}
+\definecolor{LangGray}{HTML}{F2F2F2}
+\definecolor{CodeGray}{HTML}{F7F7F7}
+\definecolor{CodeBorder}{HTML}{D9D9D9}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=LangRed,
+  urlcolor=LangRed,
+  citecolor=LangRed
+}
+
+% =========================================================
+% Section headings
+% =========================================================
+\titleformat{\section}
+  {\Large\bfseries\color{LangBlack}}
+  {}{0pt}{}
+  [\color{LangRed}\titlerule]
+
+\titleformat{\subsection}
+  {\large\bfseries\color{LangRed}}
+  {}{0pt}{}
+
+% =========================================================
+% Running header / footer
+% =========================================================
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{LMTH 2080}
+\rhead{Fall 2026}
+\cfoot{\thepage}
+
+% =========================================================
+% Course-level helpers
+% =========================================================
+\newcommand{\courselabel}[1]{%
+  \textcolor{LangRed}{\bfseries\MakeUppercase{#1}}%
+}
+
+\newcommand{\module}[2]{%
+  \subsection*{#1\quad #2}%
+}
+
+% =========================================================
+% Course header
+%
+% Usage:
+% \courseheader
+%   {Title}
+%   {LMTH 2080 --- Data and Design with Python}
+%   {August 31, 2026}
+%   {Eugene Lang College of Liberal Arts}
+%
+% Optional image:
+% assets/dad-mark.png
+% =========================================================
+\newcommand{\courseheader}[4]{%
+  \noindent
+  \begin{minipage}[t]{0.74\textwidth}
+    \raggedright
+    {\small\bfseries\color{LangRed}
+      THE NEW SCHOOL \textbullet{} EUGENE LANG COLLEGE OF LIBERAL ARTS
+    \par}
+    \vspace{6pt}
+
+    {\fontsize{27}{31}\selectfont\bfseries #1\par}
+
+    \vspace{2pt}
+
+    {\large #2\par}
+
+    \vspace{10pt}
+
+    {\small #3\par}
+
+    \vspace{2pt}
+
+    {\small #4\par}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.20\textwidth}
+    \raggedleft
+    \IfFileExists{assets/dad-mark.png}{%
+      \includegraphics[width=\linewidth]{assets/dad-mark.png}%
+    }{}
+  \end{minipage}
+
+  \par\vspace{8pt}
+
+  {\color{LangRed}\rule{\textwidth}{2.2pt}}
+
+  \vspace{5pt}
+}
+
+% =========================================================
+% General-purpose boxes
+% =========================================================
+\newtcolorbox{keyidea}{
+  colback=LangGray,
+  colframe=LangRed,
+  boxrule=0.8pt,
+  arc=0pt,
+  title=Key Idea,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{reflection}{
+  colback=white,
+  colframe=LangRed,
+  boxrule=0.6pt,
+  arc=0pt,
+  title=Reflection,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{problem}{
+  colback=LangGray,
+  colframe=LangBlack,
+  boxrule=0.6pt,
+  arc=0pt,
+  title=Problem,
+  fonttitle=\bfseries
+}
+
+% =========================================================
+% Data + design environments
+% =========================================================
+\newtcolorbox{dataprompt}{
+  colback=LangGray,
+  colframe=LangRed,
+  boxrule=0.8pt,
+  arc=0pt,
+  title=Data Question,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{designprompt}{
+  colback=white,
+  colframe=LangBlack,
+  boxrule=0.6pt,
+  arc=0pt,
+  title=Design Question,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{dataset}{
+  colback=LangGray,
+  colframe=LangBlack,
+  boxrule=0.6pt,
+  arc=0pt,
+  title=Dataset,
+  fonttitle=\bfseries
+}
+
+\newtcolorbox{checkpoint}{
+  colback=white,
+  colframe=LangRed,
+  boxrule=0.6pt,
+  arc=0pt,
+  title=Checkpoint,
+  fonttitle=\bfseries
+}
+
+% =========================================================
+% Code listings
+% =========================================================
+\lstdefinestyle{dadcode}{
+  backgroundcolor=\color{CodeGray},
+  basicstyle=\ttfamily\small,
+  frame=single,
+  rulecolor=\color{CodeBorder},
+  framerule=0.6pt,
+  framesep=6pt,
+  xleftmargin=0pt,
+  xrightmargin=0pt,
+  aboveskip=8pt,
+  belowskip=8pt,
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  tabsize=4,
+  keywordstyle=\bfseries,
+  commentstyle=\itshape,
+  stringstyle=\ttfamily
+}
+
+\lstdefinestyle{dadterminal}{
+  backgroundcolor=\color{LangBlack},
+  basicstyle=\ttfamily\small\color{white},
+  frame=single,
+  rulecolor=\color{LangBlack},
+  framerule=0.6pt,
+  framesep=6pt,
+  xleftmargin=0pt,
+  xrightmargin=0pt,
+  aboveskip=8pt,
+  belowskip=8pt,
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  tabsize=4
+}
+
+\lstnewenvironment{pythoncode}
+  {\lstset{style=dadcode,language=Python}}
+  {}
+
+\lstnewenvironment{terminal}
+  {\lstset{style=dadterminal,language={}}}
+  {}
+
+% Inline code
+\newcommand{\code}[1]{\texttt{#1}}
+
+% =========================================================
+% Small visual labels useful in handouts
+% =========================================================
+\newcommand{\questionlabel}{\courselabel{Question}}
+\newcommand{\datalabel}{\courselabel{Data}}
+\newcommand{\limitationlabel}{\courselabel{Limitation}}
+\newcommand{\designlabel}{\courselabel{Design}}
+
+\endinput

@@ -1,0 +1,343 @@
+\documentclass[11pt]{article}
+
+\usepackage{../dad}
+
+\begin{document}
+
+\courseheader
+  {Useful Data}
+  {LMTH 2080 --- Data and Design with Python}
+  {Day 01 \textbullet{} August 31, 2026}
+  {Eugene Lang College of Liberal Arts}
+
+\begin{keyidea}
+Data is not useful simply because it exists. It becomes useful in relation to
+a question, a problem, a person, and a decision.
+\end{keyidea}
+
+\section{What Would You Like to Know?}
+
+Before we write any Python, begin with a problem or question.
+
+Think about something you would genuinely like to understand, explain,
+predict, compare, improve, or change. It can be large or small, serious or
+ordinary.
+
+\vspace{4pt}
+
+\begin{dataprompt}
+What is a problem or question that interests you?
+
+\vspace{1.0in}
+\end{dataprompt}
+
+Now work backward from the question.
+
+\begin{center}
+\Large\bfseries
+problem $\longrightarrow$ question $\longrightarrow$ evidence
+$\longrightarrow$ data
+\end{center}
+
+\questionlabel
+
+What would you need to know in order to investigate your question?
+
+\vspace{0.7in}
+
+\datalabel
+
+What could you observe, measure, count, record, or collect that would provide
+evidence?
+
+\vspace{0.7in}
+
+\section{A Data Hunt}
+
+In a small group, choose \textbf{one} question to investigate. You have about
+20 minutes to find real data on the web that might help.
+
+You are not looking for an article that answers the question. You are looking
+for the \emph{data} that would allow you to investigate it yourself.
+
+Possible places to look include government open-data portals, research
+organizations, public APIs, downloadable CSV or spreadsheet files, archives,
+and datasets published by organizations.
+
+\begin{checkpoint}
+When you find a promising source, stop and inspect it before continuing to
+search. The goal is not to collect links. The goal is to understand what you
+have found.
+\end{checkpoint}
+
+For your best candidate, answer the following.
+
+\begin{enumerate}[leftmargin=*,itemsep=10pt]
+  \item \textbf{What are you trying to understand?}
+
+  \vspace{0.45in}
+
+  \item \textbf{Where did the data come from?} Who collected or published it?
+
+  \vspace{0.45in}
+
+  \item \textbf{What does one observation represent?} A person? A trip? A
+  neighborhood? A day? A transaction? Something else?
+
+  \vspace{0.45in}
+
+  \item \textbf{What variables are available?} What has actually been
+  measured or recorded?
+
+  \vspace{0.45in}
+
+  \item \textbf{What could you do with this data?} Name at least one question
+  you could plausibly answer.
+
+  \vspace{0.45in}
+
+  \item \textbf{What is missing?} What would you like to know that this data
+  cannot tell you?
+
+  \vspace{0.45in}
+\end{enumerate}
+
+\begin{designprompt}
+Who might find this data useful? What could they understand, decide, or do
+with it?
+\end{designprompt}
+
+\newpage
+
+\section{Data Is Made}
+
+A dataset is not a neutral copy of the world. Someone decided what to count,
+how to measure it, which categories to use, when to collect it, what to leave
+out, and how to store it.
+
+Return to the dataset your group found.
+
+\limitationlabel
+
+Who or what might be absent from this dataset?
+
+\vspace{0.55in}
+
+What decisions were made before you ever encountered the file?
+
+\vspace{0.55in}
+
+If you used this data to make a claim or a decision, what would you want
+someone else to know about its limitations?
+
+\vspace{0.55in}
+
+\section{From Data on the Web to Data on Your Computer}
+
+Eventually we want to do something with the data we find. That means knowing
+where our files are and how our projects are organized.
+
+Today we will use the \textbf{shell}: a text-based way of communicating with
+your computer.
+
+Open a terminal. Your instructor will provide a small course folder to work
+with.
+
+\begin{terminal}
+pwd
+\end{terminal}
+
+\texttt{pwd} means \textbf{print working directory}. It answers a fundamental
+question:
+
+\begin{center}
+\Large\bfseries Where am I?
+\end{center}
+
+Write the result here:
+
+\vspace{0.4in}
+
+Now ask the computer what is here.
+
+\begin{terminal}
+ls
+\end{terminal}
+
+What do you see?
+
+\vspace{0.4in}
+
+\subsection{Moving Around}
+
+Directories are folders. Use \texttt{cd}---\textbf{change directory}---to
+move into one.
+
+\begin{terminal}
+cd data
+pwd
+ls
+\end{terminal}
+
+To move back to the parent directory:
+
+\begin{terminal}
+cd ..
+\end{terminal}
+
+Try navigating around the course folder. At any moment, you should be able to
+answer:
+
+\begin{enumerate}[leftmargin=*]
+  \item Where am I?
+  \item What files and directories are here?
+  \item How do I get where I want to go?
+\end{enumerate}
+
+\begin{keyidea}
+You do not need to memorize shell commands today. You do need to begin
+building a mental model of files, directories, and paths.
+\end{keyidea}
+
+\subsection{Making and Inspecting Things}
+
+Try the following commands one at a time. After each command, use
+\texttt{ls} and explain what changed.
+
+\begin{terminal}
+mkdir scratch
+cd scratch
+touch notes.txt
+ls
+cd ..
+\end{terminal}
+
+If the course folder contains a CSV file, we can inspect its first few lines
+without opening a spreadsheet:
+
+\begin{terminal}
+head data/example.csv
+\end{terminal}
+
+A CSV is ultimately a text file. Soon Python will give us much more powerful
+ways to work with it.
+
+\newpage
+
+\section{Keeping Track of Change with Git}
+
+As we write code, analyze data, and revise projects, our files will change.
+Git is a system for recording those changes.
+
+Git answers another important question:
+
+\begin{center}
+\Large\bfseries What changed?
+\end{center}
+
+Move to the Git repository provided for today's exercise and ask Git about
+its current state.
+
+\begin{terminal}
+git status
+\end{terminal}
+
+Make a small change to the file specified by your instructor. Then run:
+
+\begin{terminal}
+git status
+\end{terminal}
+
+What does Git notice?
+
+\vspace{0.45in}
+
+To tell Git that a change should be part of our next recorded version:
+
+\begin{terminal}
+git add <filename>
+git status
+\end{terminal}
+
+To record the staged change:
+
+\begin{terminal}
+git commit -m "Add first notes"
+\end{terminal}
+
+And to see the history:
+
+\begin{terminal}
+git log --oneline
+\end{terminal}
+
+\begin{checkpoint}
+A useful first mental model:
+
+\begin{center}
+files change $\longrightarrow$ Git notices $\longrightarrow$
+we stage changes $\longrightarrow$ we commit a version
+\end{center}
+\end{checkpoint}
+
+GitHub gives a Git repository a remote home. We will use Git and GitHub
+throughout the semester to organize and share computational work. Branches,
+merges, and other Git tools can wait.
+
+\section{Before You Leave}
+
+Return to the question you wrote at the beginning of class.
+
+\questionlabel
+
+What is one question you would genuinely like to investigate this semester?
+
+\vspace{0.55in}
+
+\datalabel
+
+What data might help you investigate it?
+
+\vspace{0.55in}
+
+\limitationlabel
+
+What might that data fail to capture?
+
+\vspace{0.55in}
+
+\section{For Next Time: Find Some Useful Data}
+
+Before our next meeting, identify a problem or question that interests you and
+find \textbf{two plausible data sources} that could help you investigate it.
+
+For each source, record:
+
+\begin{enumerate}[leftmargin=*]
+  \item where the data comes from and who produced it;
+  \item what one observation represents;
+  \item several important variables;
+  \item one question the data could help answer; and
+  \item at least one important limitation or missing piece.
+\end{enumerate}
+
+Choose the more promising source and obtain a small sample of the actual data
+if possible. Bring your question, your sources, and the data to our next
+meeting.
+
+You will also use the Git workflow from today to add a short Markdown file
+describing what you found and make your first commit. Detailed submission
+instructions will be provided with Assignment 0.
+
+\begin{reflection}
+You are not expected to leave today knowing Unix or Git. You should leave
+with three habits:
+
+\begin{enumerate}[leftmargin=*]
+  \item begin with a question rather than a tool;
+  \item ask whether the data you find is actually useful for that question;
+  \item know where your files are and keep track of how your work changes.
+\end{enumerate}
+\end{reflection}
+
+\end{document}
