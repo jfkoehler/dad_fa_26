@@ -1,0 +1,197 @@
+\documentclass[11pt]{article}
+\usepackage{../dad}
+\begin{document}
+
+\courseheader
+  {Assignment 0: Find Some Useful Data}
+  {LMTH 2080 --- Data and Design with Python}
+  {Due Monday, September 14, 2026}
+  {Eugene Lang College of Liberal Arts}
+
+\begin{keyidea}
+Start with something you want to understand, not with a dataset or a
+programming tool.
+
+\begin{center}
+\large\bfseries
+problem $\longrightarrow$ question $\longrightarrow$ evidence
+$\longrightarrow$ data
+\end{center}
+\end{keyidea}
+
+\section{The Assignment}
+
+Identify a problem or question that genuinely interests you and find
+\textbf{two plausible sources of data} that could help you investigate it.
+
+Your question can be large or small. The important thing is that you begin
+with a question you care about and then ask what evidence would actually help
+you investigate it.
+
+\begin{dataprompt}
+\textbf{What problem or question are you interested in?}
+
+Write this before you begin searching for data. You may revise the question
+after seeing what data is actually available.
+\end{dataprompt}
+
+\section{Find Two Data Sources}
+
+Find two different data sources that could plausibly provide evidence related
+to your question. A useful source might be a downloadable CSV or spreadsheet,
+a government open-data portal, a public API, data published by a research
+organization, an archive, or another source that gives you access to the
+underlying observations.
+
+An article, chart, dashboard, or report may help you \emph{find} data, but it
+is not automatically the data itself. Whenever possible, locate the
+underlying dataset.
+
+\section{Investigate Each Source}
+
+For \textbf{each} source, answer:
+
+\begin{enumerate}[leftmargin=*,itemsep=8pt]
+  \item Where does the data come from?
+  \item Who produced or collected it?
+  \item What does one observation or row represent?
+  \item What are several important variables?
+  \item What could this data help you understand about your question?
+  \item What is missing, uncertain, or limited about the data?
+\end{enumerate}
+
+\begin{designprompt}
+Imagine someone wanted to use this data to make a decision. What would you
+want them to understand about where the data came from and what it fails to
+capture?
+\end{designprompt}
+
+\section{Choose}
+
+Choose the source that seems more useful for your question and explain why.
+Your choice does not have to be the larger, cleaner, or more sophisticated
+dataset. A small dataset that closely matches your question may be more useful
+than a massive dataset that does not.
+
+If possible, download the data you choose and inspect the actual file.
+
+\section{Create Your README}
+
+Create a file named \texttt{README.md} using this structure:
+
+\begin{verbatim}
+# Useful Data
+
+## Question
+
+What problem or question are you interested in?
+
+## Data Source 1
+
+**Source:**
+**Produced by:**
+**What does one row represent?**
+**Important variables:**
+
+### What could this data help you understand?
+
+### What is missing or limited about this data?
+
+## Data Source 2
+
+**Source:**
+**Produced by:**
+**What does one row represent?**
+**Important variables:**
+
+### What could this data help you understand?
+
+### What is missing or limited about this data?
+
+## My Choice
+
+Which dataset seems more useful for your question, and why?
+\end{verbatim}
+
+You may write informally, but your README should make it possible for someone
+else to understand what you found and why you think it could be useful.
+
+\section{Include the Data When Reasonable}
+
+If your chosen dataset is a reasonably sized downloadable file, include it in
+your project directory.
+
+\begin{verbatim}
+assignment00/
+|-- README.md
+`-- data/
+    `-- my_data.csv
+\end{verbatim}
+
+\begin{checkpoint}
+\textbf{Do not put a huge dataset in your Git repository.}
+
+If the data is very large, generated dynamically, accessed through an API, or
+cannot reasonably be included, provide a clear link to the source in your
+README instead. If useful, you may include a small sample.
+\end{checkpoint}
+
+\section{Record Your Work with Git}
+
+Begin by asking what has changed:
+
+\begin{terminal}
+git status
+\end{terminal}
+
+Stage your README:
+
+\begin{terminal}
+git add README.md
+\end{terminal}
+
+If you are including a small data file, stage that file as well. Then record
+the version:
+
+\begin{terminal}
+git commit -m "Complete useful data investigation"
+\end{terminal}
+
+Finally:
+
+\begin{terminal}
+git status
+\end{terminal}
+
+Your instructor will provide any additional GitHub submission instructions.
+
+\section{Generative AI}
+
+For this assignment, \textbf{do not use generative AI to choose your
+question, locate your datasets, or evaluate whether the data is useful}.
+
+The searching, inspecting, comparing, and deciding are the work of this
+assignment. You may use ordinary web search, documentation, data portals,
+course materials, and help from the instructor.
+
+\section{What to Submit}
+
+By the beginning of class on \textbf{Monday, September 14}, you should have:
+
+\begin{itemize}[leftmargin=*]
+  \item a question or problem you want to investigate;
+  \item two plausible data sources;
+  \item a completed \texttt{README.md};
+  \item a clear explanation of which source you chose and why;
+  \item the chosen data or a link to it, as appropriate; and
+  \item at least one Git commit recording your work.
+\end{itemize}
+
+\begin{reflection}
+\begin{center}
+\large
+\textbf{Is this data useful for what I am actually trying to understand?}
+\end{center}
+\end{reflection}
+
+\end{document}

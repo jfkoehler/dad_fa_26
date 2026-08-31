@@ -1,0 +1,223 @@
+\documentclass[aspectratio=169]{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{LangRed}{HTML}{E31B23}
+\definecolor{LangBlack}{HTML}{111111}
+\definecolor{LangGray}{HTML}{F2F2F2}
+
+\usetheme{default}
+\usefonttheme{professionalfonts}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{%
+  \hfill\usebeamerfont{page number in head/foot}\insertframenumber\hspace{0.5cm}\vspace{0.25cm}}
+\setbeamercolor{normal text}{fg=LangBlack,bg=white}
+\setbeamercolor{frametitle}{fg=LangBlack,bg=white}
+\setbeamercolor{structure}{fg=LangRed}
+\setbeamercolor{alerted text}{fg=LangRed}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamerfont{title}{series=\bfseries,size=\Huge}
+\setbeamersize{text margin left=0.7cm,text margin right=0.7cm}
+
+\newcommand{\redrule}{\par\vspace{0.15cm}{\color{LangRed}\rule{\linewidth}{1.5pt}}}
+\newcommand{\bigquestion}[1]{\begin{center}\vfill{\fontsize{30}{35}\selectfont\bfseries #1}\vfill\end{center}}
+
+\lstdefinestyle{terminal}{
+  backgroundcolor=\color{LangBlack},
+  basicstyle=\ttfamily\large\color{white},
+  frame=single,
+  rulecolor=\color{LangBlack},
+  showstringspaces=false,
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true
+}
+
+\title{Useful Data}
+\subtitle{Data and Design with Python \textbullet{} LMTH 2080}
+\author{}
+\date{August 31, 2026}
+
+\begin{document}
+
+\begin{frame}[plain]
+  {\color{LangRed}\bfseries THE NEW SCHOOL \textbullet{} EUGENE LANG COLLEGE OF LIBERAL ARTS}\par
+  \vspace{0.55cm}
+  {\fontsize{34}{39}\selectfont\bfseries Useful Data}\par
+  \vspace{0.15cm}
+  {\Large Data and Design with Python \textbullet{} LMTH 2080}\par
+  \redrule
+  \vfill
+  {\large Monday, August 31, 2026 \textbullet{} 9:00--11:40 AM}
+\end{frame}
+
+\begin{frame}{Today}
+\redrule
+\vspace{0.25cm}
+\begin{enumerate}
+  \setlength\itemsep{0.25cm}
+  \item What makes data useful?
+  \item Find some data.
+  \item Who made it, and what's missing?
+  \item Files and the Unix shell.
+  \item Keeping track of change with Git.
+  \item Assignment 0: Find Some Useful Data.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[plain]
+\bigquestion{What would you like to know?}
+\end{frame}
+
+\begin{frame}{From a Problem to Data}
+\redrule
+\vfill
+\begin{center}
+{\LARGE\bfseries
+problem $\longrightarrow$ question $\longrightarrow$ evidence $\longrightarrow$ data}
+\end{center}
+\vfill
+\begin{block}{Think about}
+Something you would genuinely like to understand, explain, predict, compare, improve, or change.
+\end{block}
+\end{frame}
+
+\begin{frame}{Data Hunt}
+\redrule
+\begin{columns}[T]
+\column{0.52\textwidth}
+{\Large\bfseries Find real data that could help investigate a question.}
+
+\vspace{0.35cm}
+You are \alert{not} looking for an article that answers the question. You are looking for data that would let you investigate it yourself.
+
+\column{0.43\textwidth}
+\begin{block}{Ask}
+\begin{itemize}
+  \item Who collected it?
+  \item What does one row represent?
+  \item What variables are available?
+  \item What could it help answer?
+  \item What's missing?
+\end{itemize}
+\end{block}
+\end{columns}
+\end{frame}
+
+\begin{frame}[plain]
+\bigquestion{Data is made.}
+\end{frame}
+
+\begin{frame}{What Is Missing?}
+\redrule
+\begin{itemize}
+  \setlength\itemsep{0.35cm}
+  \item Who or what might be absent from this dataset?
+  \item What decisions were made before you ever encountered the file?
+  \item What categories were chosen?
+  \item What was measured---and what was not?
+  \item What should someone know before using this data to make a claim or decision?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+\begin{center}
+\vfill
+{\color{LangRed}\fontsize{28}{32}\selectfont\bfseries BREAK}
+\vspace{0.3cm}
+
+{\Large Back at 10:20}
+\vfill
+\end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Where Am I?}
+\redrule
+\vspace{0.25cm}
+\begin{lstlisting}[style=terminal]
+pwd
+ls
+cd data
+pwd
+ls
+\end{lstlisting}
+\vspace{0.25cm}
+{\Large\bfseries Three questions:}
+\begin{enumerate}
+  \item Where am I?
+  \item What is here?
+  \item How do I get where I want to go?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]{Challenge: Inspect the Data}
+\redrule
+\begin{lstlisting}[style=terminal]
+head data/unemployment.csv
+head data/chicago_crimes.csv
+\end{lstlisting}
+\begin{itemize}
+  \item What does one row represent?
+  \item What variables are available?
+  \item What question could you investigate?
+  \item What changes when a dataset has many more columns?
+\end{itemize}
+\vfill
+{\Large\bfseries Is \texttt{head} still enough to understand what you have?}
+\end{frame}
+
+\begin{frame}[fragile]{Keeping Track of Change}
+\redrule
+\begin{lstlisting}[style=terminal]
+git status
+git add <filename>
+git commit -m "Add first notes"
+git log --oneline
+\end{lstlisting}
+\vspace{0.3cm}
+\begin{center}
+{\Large\bfseries files change $\longrightarrow$ Git notices $\longrightarrow$ stage $\longrightarrow$ commit}
+\end{center}
+\end{frame}
+
+\begin{frame}{Before You Leave}
+\redrule
+\vspace{0.3cm}
+{\color{LangRed}\bfseries QUESTION}\par
+What is one question you would genuinely like to investigate this semester?
+
+\vspace{0.55cm}
+{\color{LangRed}\bfseries DATA}\par
+What data might help you investigate it?
+
+\vspace{0.55cm}
+{\color{LangRed}\bfseries LIMITATION}\par
+What might that data fail to capture?
+\end{frame}
+
+\begin{frame}{For Next Time}
+\redrule
+{\LARGE\bfseries Assignment 0: Find Some Useful Data}
+\vspace{0.35cm}
+
+Find \textbf{two plausible data sources} for a problem or question that interests you.
+
+\vspace{0.25cm}
+For each, identify:
+\begin{itemize}
+  \item where it comes from and who produced it;
+  \item what one observation represents;
+  \item important variables;
+  \item something it could help answer; and
+  \item an important limitation.
+\end{itemize}
+
+\vfill
+{\bfseries Next meeting: Monday, September 14 --- Python as a Tool}
+\end{frame}
+
+\end{document}

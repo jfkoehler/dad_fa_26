@@ -216,11 +216,43 @@ If the course folder contains a CSV file, we can inspect its first few lines
 without opening a spreadsheet:
 
 \begin{terminal}
-head data/example.csv
+head data/unemployment.csv
 \end{terminal}
 
 A CSV is ultimately a text file. Soon Python will give us much more powerful
 ways to work with it.
+
+\begin{checkpoint}
+\textbf{Challenge: What can you learn from the first few lines?}
+
+First inspect the smaller dataset:
+
+\begin{terminal}
+head data/unemployment.csv
+\end{terminal}
+
+Without opening the file in another program, try to answer:
+
+\begin{itemize}[leftmargin=*]
+    \item What does one row represent?
+    \item What variables are available?
+    \item What question could you investigate with this data?
+\end{itemize}
+
+Now try the same thing with a larger dataset:
+
+\begin{terminal}
+head data/chicago_crimes.csv
+\end{terminal}
+
+What changes when a dataset has many more columns?
+
+\vspace{0.35in}
+
+Is \texttt{head} still enough to understand what you have?
+
+\vspace{0.35in}
+\end{checkpoint}
 
 \newpage
 
